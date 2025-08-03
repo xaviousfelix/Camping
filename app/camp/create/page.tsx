@@ -6,7 +6,7 @@ import FormInput from "@/components/form/FormInput";
 import ImageInput from "@/components/form/ImageInput";
 import ProvinceInput from "@/components/form/ProvinceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
-import MapLandmarkClient from "@/components/map/MapLandmarkClient";
+// import MapLandmarkClient from "@/components/map/MapLandmarkClient";
 
 const CreateProfile = async () => {
   return (
@@ -41,7 +41,7 @@ const CreateProfile = async () => {
 
           <ImageInput />
 
-          <MapLandmarkClient />
+          {/* <MapLandmarkClient /> */}
 
 
 

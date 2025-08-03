@@ -1,11 +1,11 @@
-'use client';
+// 'use client';
 
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
-const MapLandmark = dynamic(() => import('@/components/map/MapLandmark'), {
-  ssr: false,
-});
+// const MapLandmark = dynamic(() => import('@/components/map/MapLandmark'), {
+//   ssr: false,
+// });
 
-export default function MapLandmarkClient() {
-  return <MapLandmark />;
-}
+// export default function MapLandmarkClient() {
+//   return <MapLandmark />;
+// }
