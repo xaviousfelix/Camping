@@ -29,4 +29,14 @@ npm install
 npm install react-leaflet@4.2.1 --legacy-peer-deps
 npm install react@latest react-dom@latest
 
+npx shadcn@latest init -d
+npx shadcn@latest add button
+
+npm install prisma --save-dev
+npm install @prisma/client
+npx prisma init
+npx prisma db push
+npx prisma studio
+npm install @supabase/supabase-js --legacy-peer-deps
+
 npm run dev
