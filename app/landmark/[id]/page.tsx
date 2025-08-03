@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
+
   const landmark = await fetchLandmarkDetail({ id });
 
   if (!landmark) redirect("/");
@@ -33,3 +34,4 @@ export default async function Page({ params }: { params: { id: string } }) {
     </section>
   );
 }
+
