@@ -6,7 +6,8 @@ import { Suspense } from "react";
 const page = async({ searchParams }: 
   { searchParams: { search?: string,category?:string } }) => {
   // Search
-  const { search, category } = await searchParams;
+  const { search, category } = searchParams;
+
 
   return (
     <section>

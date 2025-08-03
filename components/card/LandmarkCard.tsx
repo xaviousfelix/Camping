@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { LandmarkCardProps } from "@/utils/types";
 import LandmarkRating from "./LandmarkRating";
-import FavoriteToggleButton from "./FavoriteToggleButton";
+import FavoriteToggleButton from "@/components/card/FavoriteToggleButton.server";
 import Link from "next/link";
 
 const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {

@@ -1,5 +1,5 @@
 import { fetchLandmarkDetail } from "@/actions/actions";
-import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
+import FavoriteToggleButton from "@/components/card/FavoriteToggleButton.server";
 import Breadcrums from "@/components/landmark/Breadcrums";
 import Description from "@/components/landmark/Description";
 import ImageContainer from "@/components/landmark/ImageContainer";
