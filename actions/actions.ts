@@ -38,7 +38,6 @@ export const createProfileAction = async (
 
     const rawData = Object.fromEntries(formData);
     const validateField = validateWithZod(profileSchema, rawData);
-    // console.log("validated", validateField);
 
     await db.profile.create({
       data: {
@@ -54,9 +53,7 @@ export const createProfileAction = async (
         hasProfile: true,
       },
     });
-    // return { message: "Create Profile Success!!!" };
   } catch (error) {
-    // console.log(error);
     return renderError(error);
   }
   redirect("/");
@@ -77,7 +74,6 @@ export const createLandmarkAction = async (
 
     // Step 2 Upload Image to Supabase
     const fullPath = await uploadFile(validatedFile.image);
-    // console.log(fullPath);
     // Step 3 Insert to DB
     await db.landmark.create({
       data: {
@@ -88,7 +84,6 @@ export const createLandmarkAction = async (
     });
     // return { message: "Create Landmark Success!!!" };
   } catch (error) {
-    // console.log(error);
     return renderError(error);
   }
   redirect("/");
