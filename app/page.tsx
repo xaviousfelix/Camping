@@ -1,4 +1,4 @@
-// rafce
+
 import LoadingCard from "@/components/card/LoadingCard";
 import LandmarkContainer from "@/components/home/LandmarkContainer";
 import { Button } from "@/components/ui/button";
