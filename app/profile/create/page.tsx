@@ -5,6 +5,7 @@ import FormInput from "@/components/form/FormInput";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
 
 const CreateProfile = async() => {
   const user = await currentUser()
