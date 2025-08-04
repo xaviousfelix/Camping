@@ -29,13 +29,14 @@ const renderError = (error: unknown): { message: string } => {
   };
 };
 export const createProfileAction = async (
+  prevState: any,
   formData: FormData
 ) => {
   try {
     const user = await currentUser();
     if (!user) throw new Error("Please Login!!!");
 
-    const rawData = Object.fromEntries(formData);
+    const rawData = Object.fromEntries(formData.entries());
     const validateField = validateWithZod(profileSchema, rawData);
 
     await db.profile.create({
@@ -80,8 +81,6 @@ export const createLandmarkAction = async (
       },
     });
   } catch (error) {
-    console.log(error);
-    
     return renderError(error);
   }
   redirect("/");
