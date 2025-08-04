@@ -184,8 +184,6 @@ export const fetchFavorits = async () => {
           image: true,
           price: true,
           province: true,
-          lat: true,
-          lng: true,
           category: true,
         },
       },

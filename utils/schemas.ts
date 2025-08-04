@@ -29,8 +29,6 @@ export const landmarkSchema = z.object({
     .max(200, { message: "รายละเอียดต้องน้อยกว่า 200 อักขระ" }),
   price: z.coerce.number().int().min(0,{ message: 'ราคาต้องมากกว่า 0'}),
   province: z.string(),
-  // lat: z.any(),
-  // lng: z.any(),
 });
 
 export const validateWithZod = <T>(schema: ZodSchema<T>, data: unknown): T => {

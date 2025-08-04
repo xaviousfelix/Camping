@@ -11,8 +11,6 @@ export type LandmarkCardProps = {
   category: string;
   province: string;
   price: number;
-  // lat: number;
-  // lng: number;
 };
 
 export type CurrentSlideData = {
