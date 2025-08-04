@@ -18,9 +18,9 @@ const CreateProfile = async() => {
 
         <FormContainer action={createProfileAction}>
           <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <FormInput name="firstName" label="Fist Name" type="text" placeholder="First Name" />
-          <FormInput name="lastName" label="Last Name" type="text" placeholder="Last Name"/>
-          <FormInput name="userName" label="Username" type="text" placeholder="Username" />
+          <FormInput name="firstName" label="Fist Name" type="text" placeholder="First Name"  />
+          <FormInput name="lastName" label="Last Name" type="text" placeholder="Last Name"  />
+          <FormInput name="userName" label="Username" type="text" placeholder="Username"  />
           </div>
           <SubmitButton text="create profile" size='lg' />
         </FormContainer>

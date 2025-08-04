@@ -1,9 +1,9 @@
 import { z, ZodSchema } from "zod";
 
 export const profileSchema = z.object({
-  firstName: z.string().min(2, { message: "ชื่อ ต้องมากกว่า 2 อักขระ" }),
-  lastName: z.string().min(2, { message: "นามสกุล ต้องมากกว่า 2 อักขระ" }),
-  userName: z.string().min(2, { message: "username ต้องมากกว่า 2 อักขระ" }),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  userName: z.string().min(1, "Username is required"),
 });
 
 const validateImage = () => {

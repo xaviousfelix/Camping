@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Providers from "./Providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import LoadingCard from "@/components/card/LoadingCard";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +32,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClerkProvider>
-          <Providers>
-            <Navbar />
-            <main className="px-12">{children}</main>
-          </Providers>
-        </ClerkProvider>
+        <Suspense fallback={<LoadingCard />}>
+          <ClerkProvider>
+            <Providers>
+              <Navbar />
+              <main className="px-12">{children}</main>
+            </Providers>
+          </ClerkProvider>
+        </Suspense>
       </body>
     </html>
   );

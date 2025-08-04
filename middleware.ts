@@ -8,26 +8,23 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 const isProtectedRoute = createRouteMatcher([
-  "/favorits(.*)", // Note: "favorits" matches your actions.ts spelling
+  "/favorits(.*)",
   "/camp(.*)",
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
   try {
-    // Allow public routes
     if (isPublicRoute(req)) {
       console.log(`Public route accessed: ${req.nextUrl.pathname}`);
       return;
     }
-
-    // Protect /favorites/* and /camp/* (except /camp/create)
     if (isProtectedRoute(req) && req.nextUrl.pathname !== "/camp/create") {
       console.log(`Protecting route: ${req.nextUrl.pathname}`);
       await auth.protect();
     }
   } catch (err) {
     console.error("Auth error in middleware:", err);
-    throw err; // Throw to surface in Vercel logs
+    throw err;
   }
 });
 
