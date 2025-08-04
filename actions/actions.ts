@@ -29,7 +29,6 @@ const renderError = (error: unknown): { message: string } => {
   };
 };
 export const createProfileAction = async (
-  prevState: any,
   formData: FormData
 ) => {
   try {

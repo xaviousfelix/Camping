@@ -1,7 +1,5 @@
 import LandmarkCard from "../card/LandmarkCard";
 import { LandmarkCardProps } from "@/utils/types";
-import LoadingCard from "../card/LoadingCard";
-// type landmark อย่าลืม
 const LandmarkList = ({ landmarks }: { landmarks: LandmarkCardProps[] }) => {
   return (
     <section className="grid sm:grid-cols-2 

@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "pk_test_Z2FtZS1zd2lmdC0yMi5jbGVyay5hY2NvdW50cy5kZXYk"
+  CLERK_SECRET_KEY = "sk_test_zylbfdpR2diaqqquhPySEPyobFnozZRGTLTlr0vtAM"
+  NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL = "/profile/create"
+  NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL = "/profile/create"
+  SUPABASE_URL = "https://jdtjdbzghpwkljekigrg.supabase.co"
+  SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkdGpkYnpnaHB3a2xqZWtpZ3JnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MjA1NDU4OSwiZXhwIjoyMDY3NjMwNTg5fQ.g3X5bU8ieLRdazBxO4uNH48iXaZnvITetZIGDIDCga0"
+  DATABASE_URL = "postgresql://postgres.jdtjdbzghpwkljekigrg:QRLoG6ci7XxwGJQb@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+  DIRECT_URL = "postgresql://postgres.jdtjdbzghpwkljekigrg:QRLoG6ci7XxwGJQb@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"

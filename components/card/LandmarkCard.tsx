@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const LandmarkCard = ({ landmark }: { landmark: LandmarkCardProps }) => {
   const { name, image, id,description,price,
-     province, lat, lng, category } = landmark;
+     province} = landmark;
   return (
     <article className="group relative">
       <Link href={`/landmark/${id}`}>
