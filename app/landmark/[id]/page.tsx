@@ -4,11 +4,14 @@ import Breadcrums from "@/components/landmark/Breadcrums";
 import Description from "@/components/landmark/Description";
 import ImageContainer from "@/components/landmark/ImageContainer";
 import ShareButton from "@/components/landmark/ShareButton";
-// import MapLandmark from "@/components/map/MapLandmark";
 import { redirect } from "next/navigation";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
 
   const landmark = await fetchLandmarkDetail({ id });
 
@@ -34,4 +37,3 @@ export default async function Page({ params }: { params: { id: string } }) {
     </section>
   );
 }
-
