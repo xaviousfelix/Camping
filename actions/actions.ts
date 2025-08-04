@@ -13,21 +13,29 @@ import { uploadFile } from "@/utils/supabase";
 import { revalidatePath } from "next/cache";
 
 const getAuthUser = async () => {
-  // code body
-  const user = await currentUser();
-  if (!user) {
-    throw new Error("You must logged!!!");
+  try {
+    const user = await currentUser();
+    if (!user) {
+      console.error("getAuthUser: No user found");
+      throw new Error("You must be logged in");
+    }
+    if (!user.privateMetadata.hasProfile) {
+      console.log("getAuthUser: Redirecting to /profile/create");
+      redirect("/profile/create");
+    }
+    return user;
+  } catch (error) {
+    console.error("getAuthUser error:", error);
+    throw error;
   }
-  if (!user.privateMetadata.hasProfile) redirect("/profile/create");
-  return user;
 };
 
 const renderError = (error: unknown): { message: string } => {
-  //code body
-  return {
-    message: error instanceof Error ? error.message : "An Error!!!",
-  };
+  const message = error instanceof Error ? error.message : "An unknown error occurred";
+  console.error("renderError:", message);
+  return { message };
 };
+
 export const createProfileAction = async (
   formData: FormData
 ) => {
