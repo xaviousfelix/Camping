@@ -13,29 +13,21 @@ import { uploadFile } from "@/utils/supabase";
 import { revalidatePath } from "next/cache";
 
 const getAuthUser = async () => {
-  try {
-    const user = await currentUser();
-    if (!user) {
-      console.error("getAuthUser: No user found");
-      throw new Error("You must be logged in");
-    }
-    if (!user.privateMetadata.hasProfile) {
-      console.log("getAuthUser: Redirecting to /profile/create");
-      redirect("/profile/create");
-    }
-    return user;
-  } catch (error) {
-    console.error("getAuthUser error:", error);
-    throw error;
+  // code body
+  const user = await currentUser();
+  if (!user) {
+    throw new Error("You must logged!!!");
   }
+  if (!user.privateMetadata.hasProfile) redirect("/profile/create");
+  return user;
 };
 
 const renderError = (error: unknown): { message: string } => {
-  const message = error instanceof Error ? error.message : "An unknown error occurred";
-  console.error("renderError:", message);
-  return { message };
+  //code body
+  return {
+    message: error instanceof Error ? error.message : "An Error!!!",
+  };
 };
-
 export const createProfileAction = async (
   formData: FormData
 ) => {
@@ -75,13 +67,11 @@ export const createLandmarkAction = async (
     const rawData = Object.fromEntries(formData);
     const file = formData.get("image") as File;
 
-    // Step 1 Validate Data
     const validatedFile = validateWithZod(imageSchema, { image: file });
     const validateField = validateWithZod(landmarkSchema, rawData);
 
-    // Step 2 Upload Image to Supabase
     const fullPath = await uploadFile(validatedFile.image);
-    // Step 3 Insert to DB
+
     await db.landmark.create({
       data: {
         ...validateField,
@@ -89,8 +79,9 @@ export const createLandmarkAction = async (
         profileId: user.id,
       },
     });
-    // return { message: "Create Landmark Success!!!" };
   } catch (error) {
+    console.log(error);
+    
     return renderError(error);
   }
   redirect("/");
@@ -200,7 +191,7 @@ export const fetchFavorits = async () => {
       },
     },
   });
-  return favorites.map((favorite: { landmark: any }) => favorite.landmark);
+  return favorites.map((favorite: any) => favorite.landmark);
 };
 
 

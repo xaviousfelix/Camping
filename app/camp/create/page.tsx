@@ -6,7 +6,6 @@ import FormInput from "@/components/form/FormInput";
 import ImageInput from "@/components/form/ImageInput";
 import ProvinceInput from "@/components/form/ProvinceInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
-// import MapLandmarkClient from "@/components/map/MapLandmarkClient";
 
 const CreateProfile = async () => {
   return (
@@ -24,7 +23,6 @@ const CreateProfile = async () => {
               placeholder="Landmark Name"
             />
 
-            {/* Category */}
             <CategoryInput />
           </div>
           <TextAreaInput name="description" />
@@ -40,10 +38,6 @@ const CreateProfile = async () => {
           </div>
 
           <ImageInput />
-
-          {/* <MapLandmarkClient /> */}
-
-
 
 
           <SubmitButton text="create Landmark" size="lg" />

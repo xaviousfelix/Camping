@@ -31,7 +31,6 @@ export default async function Page({ params }: PageProps) {
       <section>
         <div>
           <Description description={landmark.description} />
-          {/* <MapLandmark location={{ lat: landmark.lat, lng: landmark.lng }} /> */}
         </div>
       </section>
     </section>

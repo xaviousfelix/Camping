@@ -1,9 +1,9 @@
 import { z, ZodSchema } from "zod";
 
 export const profileSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  userName: z.string().min(1, "Username is required"),
+  firstName: z.string().min(2, { message: "ชื่อ ต้องมากกว่า 2 อักขระ" }),
+  lastName: z.string().min(2, { message: "นามสกุล ต้องมากกว่า 2 อักขระ" }),
+  userName: z.string().min(2, { message: "username ต้องมากกว่า 2 อักขระ" }),
 });
 
 const validateImage = () => {
@@ -29,16 +29,18 @@ export const landmarkSchema = z.object({
     .max(200, { message: "รายละเอียดต้องน้อยกว่า 200 อักขระ" }),
   price: z.coerce.number().int().min(0,{ message: 'ราคาต้องมากกว่า 0'}),
   province: z.string(),
-  lat: z.coerce.number(),
-  lng: z.coerce.number(),
+  // lat: z.any(),
+  // lng: z.any(),
 });
 
 export const validateWithZod = <T>(schema: ZodSchema<T>, data: unknown): T => {
   const result = schema.safeParse(data);
   if (!result.success) {
-    // code
-    const errors = result.error?.issues.map((error) => error.message);
-    throw new Error(errors.join(","));
+    const errors = result.error.issues.map(
+      (error) => `${error.path.join(".") || "form"}: ${error.message}`
+    );
+    throw new Error(errors.join(" | "));
   }
   return result.data;
 };
+

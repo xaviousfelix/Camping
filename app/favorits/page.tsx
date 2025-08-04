@@ -1,11 +1,15 @@
-// app/favorits/page.tsx
-import { Suspense } from "react";
-import ClientPage from "./ClientPage";
+import { fetchFavorits } from "@/actions/actions"
+import EmptyList from "@/components/home/EmptyList"
+import LandmarkList from "@/components/home/LandmarkList"
 
-export default function Page() {
-  return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <ClientPage />
-    </Suspense>
-  );
+const FavoritsPage = async() => {
+  const favorites = await fetchFavorits()
+  if(favorites.length ===0){
+    return <EmptyList 
+    heading="No items Favorits"
+    />
+  }
+
+  return <LandmarkList landmarks={favorites}/>
 }
+export default FavoritsPage
