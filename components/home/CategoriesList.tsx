@@ -1,4 +1,4 @@
-// rafce
+
 import { categories } from "@/utils/categories";
 import Link from "next/link";
 const CategoriesList = ({
@@ -12,7 +12,7 @@ const CategoriesList = ({
 
   return (
     <div>
-      <div className="flex justify-center my-4 font-bold gap-x-4 ">
+      <div className="flex justify-center flex-wrap gap-x-4 gap-y-2 my-4 font-bold ">
         {categories.map((item) => {
             const isActive = item.label === category
           return (
@@ -24,7 +24,7 @@ const CategoriesList = ({
               justify-center hover:text-primary hover:scale-110
               hover:duration-300
               items-center ${isActive ? 'text-primary' : ''}`}>
-                <item.icon />
+                <item.icon className="w-5 h-5 sm:w-6 sm:h-6"/>
                 <p>{item.label}</p>
               </article>
             </Link>
